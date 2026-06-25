@@ -8,10 +8,8 @@ The application allows users to browse recipes, search by name, filter by catego
 
 ## 🚀 Live Demo
 
-> Add your Vercel URL here after deployment
-
 ```text
-https://your-recipes-app.vercel.app
+https://recipes-app-one-orpin.vercel.app/
 ```
 
 ---
@@ -268,4 +266,5 @@ This project can be deployed on:
 
 ## 👨‍💻 Author
 
-Developer Dylan Marin 
+Developer: Dylan Marin
+ 
