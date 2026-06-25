@@ -1,0 +1,169 @@
+/* RECIPE DETAIL */
+
+.detail-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px 100px;
+}
+
+/* HEADER / HERO */
+.detail-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 60px;
+}
+
+.detail-info {
+  text-align: left;
+  max-width: 100%;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.detail-info h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--text);
+  line-height: 1.1;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* Meta Pills (Category & Area) */
+.detail-info p {
+  font-size: 0.9rem;
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.detail-info p strong {
+  display: none;
+}
+
+.detail-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-top: 20px;
+}
+
+/* INGREDIENTS */
+h2 {
+  font-size: 2rem;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  text-align: left;
+  font-family: var(--serif);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  background-color: var(--accent);
+  margin-top: 15px;
+}
+
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 40px;
+}
+
+.ingredients-list li {
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-family: var(--sans);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.ingredients-list li::before {
+  content: "•";
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* INSTRUCTIONS SECTION */
+.detail-container > p {
+  font-size: 1.15rem;
+  line-height: 2;
+  color: var(--text);
+  white-space: pre-line;
+  max-width: 850px;
+  margin: 0 0 80px;
+  font-family: var(--sans);
+  font-weight: 400;
+}
+
+.detail-container > p::first-letter {
+  font-family: var(--serif);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--accent);
+  float: left;
+  line-height: 0.8;
+  padding-right: 12px;
+  padding-top: 8px;
+}
+
+/* VIDEO SECTION */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  margin: 0 0 60px;
+  max-width: 1000px;
+  background: var(--border);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .detail-info h1 {
+    font-size: 2.2rem;
+  }
+  
+  .ingredients-list {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .detail-container > p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+  
+  .detail-image {
+    aspect-ratio: 4/3;
+  }
+}
