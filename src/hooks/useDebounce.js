@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 /**
- * Delays updating the returned value until `delay` ms have passed
- * since the last change to `value`.
+ * Waits a short time before updating the value.
+ * This stops too many API calls when the user types fast.
  *
- * @param {*}      value - The value to debounce.
- * @param {number} delay - Milliseconds to wait (default 400).
- * @returns The debounced value.
+ * @param {*}      value - The value to wait for.
+ * @param {number} delay - Time to wait in milliseconds (default 400).
+ * @returns The value after the wait.
  */
 function useDebounce(value, delay = 400) {
   const [debouncedValue, setDebouncedValue] = useState(value);

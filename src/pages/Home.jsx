@@ -24,10 +24,10 @@ function Home() {
   const [selectedCategory, setSelectedCategory] = useState("Dessert");
   const [currentPage, setCurrentPage] = useState(1);
 
-  // ── useDebounce replaces the old setTimeout pattern ───────────────────────
+  // Wait before searching so we don't send too many requests
   const debouncedSearch = useDebounce(searchTerm, 400);
 
-  // ── Fetch recipes whenever debounced search or category changes ───────────
+  // Load recipes when the search or category changes
   useEffect(() => {
     let active = true;
 
@@ -41,7 +41,7 @@ function Home() {
 
         if (debouncedSearch.trim()) {
           data = await searchRecipes(debouncedSearch);
-        } else if (selectedCategory === "Todas") {
+        } else if (selectedCategory === "All") {
           data = await getAllRecipes();
         } else {
           data = await getRecipesByCategory(selectedCategory);
@@ -69,7 +69,6 @@ function Home() {
     };
   }, [debouncedSearch, selectedCategory]);
 
-  // Category list
   useEffect(() => {
     const loadCategories = async () => {
       try {
@@ -82,7 +81,6 @@ function Home() {
     loadCategories();
   }, []);
 
-  // Pagination
   const totalPages = Math.ceil(allRecipes.length / PAGE_SIZE);
   const pagedRecipes = allRecipes.slice(
     (currentPage - 1) * PAGE_SIZE,
@@ -121,15 +119,14 @@ function Home() {
     return [...pages].sort((a, b) => a - b);
   };
 
-  // Heading
   const heading = debouncedSearch
     ? `Resultados para "${debouncedSearch}"`
-    : selectedCategory === "Todas"
+    : selectedCategory === "All"
     ? "Todas las recetas"
     : `Recetas de ${selectedCategory}`;
 
   return (
-    <div>
+    <div className="home-page">
       <h1>{heading}</h1>
 
       <div className="filters-container">
@@ -139,11 +136,11 @@ function Home() {
           value={selectedCategory}
           onChange={(e) => {
             setSelectedCategory(e.target.value);
-            setSearchTerm(""); // clear search when changing category
+            setSearchTerm(""); // Clear the search when a new category is selected
           }}
           disabled={loading}
         >
-          <option value="Todas">Todas las categorías</option>
+          <option value="All">Todas las categorías</option>
           {categories.map((category) => (
             <option key={category.idCategory} value={category.strCategory}>
               {category.strCategory}
@@ -160,7 +157,6 @@ function Home() {
         />
       )}
 
-      {/* Skeleton while loading */}
       {loading && (
         <div className="recipes-grid">
           {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
@@ -169,7 +165,6 @@ function Home() {
         </div>
       )}
 
-      {/* Results */}
       {!loading && !error && allRecipes.length === 0 && (
         <EmptyState
           icon="🔍"

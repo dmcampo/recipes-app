@@ -5,8 +5,8 @@ import Loader from "../components/Loader";
 import "../styles/details.css";
 
 /**
- * Extracts the 11-character YouTube video ID from various URL formats.
- * E.g., short links, standard watch links, and embed links.
+ * Gets the YouTube video ID from a URL.
+ * Works with different types of YouTube links.
  */
 function getYouTubeId(url) {
   if (!url) return null;

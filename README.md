@@ -1,108 +1,271 @@
-# Recetas Online - Portal Gastronómico
+# Recipes App 🍽️
 
-**Recetas Online** es una aplicación web responsiva inspirada en portales gastronómicos de alta gama. Construida con **React** y **Vite**, ofrece una experiencia de usuario fluida mediante una interfaz limpia, transiciones suaves, soporte automático para modo oscuro y persistencia de recetas favoritas.
+A modern recipe discovery application built with **React**, **Vite**, and **TheMealDB API**.
 
-La aplicación consume datos en tiempo real de la API de **TheMealDB** empleando la biblioteca **Axios**.
-
----
-
-## 🚀 Características Principales
-
-*   **Búsqueda en Tiempo Real:** Filtra recetas al instante mediante una barra de búsqueda optimizada con *Debounce* (400ms) para evitar solicitudes HTTP innecesarias.
-*   **Filtro por Categorías:** Clasifica recetas por tipo de platillo (Búsqueda general, Postres, Mariscos, etc.).
-*   **Detalle Completo de Recetas:** Ficha visual de ingredientes estructurados en dos columnas, instrucciones de preparación y videotutorial interactivo de YouTube.
-*   **Sistema de Favoritos:** Guarda y remueve recetas de favoritos con un botón de corazón interactivo. Los datos se persisten en el navegador a través de `localStorage` y actualizan un contador en tiempo real en la barra de navegación.
-*   **Cargas Optimizadas (UX):** Tarjetas simuladas de carga (*Skeleton Cards*) con animación animada *shimmer* para evitar el desplazamiento abrupto del diseño (Content Layout Shift).
-*   **Diseño Premium y Responsivo:** Tipografías elegantes (*Playfair Display* e *Inter*), microanimaciones interactivas al pasar el cursor y adaptabilidad completa a móviles y ordenadores de escritorio.
+The application allows users to browse recipes, search by name, filter by category, view detailed recipe information, and save favorite recipes with persistent storage.
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## 🚀 Live Demo
 
-*   **Core:** React JS (v18)
-*   **Entorno de Construcción (Build Tool):** Vite JS
-*   **Enrutamiento SPA:** React Router DOM (v6)
-*   **Cliente HTTP:** Axios
-*   **Estilos:** CSS Puro (Vanilla CSS) con variables de diseño CSS y adaptabilidad a temas de sistema
-*   **Persistencia:** LocalStorage (API de almacenamiento web)
-*   **Fuente de Datos:** TheMealDB API
+> Add your Vercel URL here after deployment
+
+```text
+https://your-recipes-app.vercel.app
+```
 
 ---
 
-## 📋 Requisitos Previos
+## ✨ Features
 
-Asegúrate de tener instalado en tu sistema local:
-*   [Node.js](https://nodejs.org/) (versión 18.0.0 o superior recomendada)
-*   [NPM](https://www.npmjs.com/) (generalmente instalado junto a Node.js)
+### Recipe Discovery
+
+- Browse recipes by category
+- Search recipes by name
+- View complete recipe details
+- Watch recipe videos from YouTube
+- Display ingredients and measurements
+
+### Favorites System
+
+- Add recipes to favorites
+- Remove recipes from favorites
+- Persistent storage using LocalStorage
+- Favorites page with dedicated route
+
+### User Experience
+
+- Responsive design for mobile, tablet, and desktop
+- Skeleton loading states
+- Empty states for searches and favorites
+- Smooth scrolling between pages
+- Debounced search input
+- Client-side pagination
+- Error handling and user feedback
 
 ---
 
-## ⚙️ Instalación y Configuración
+## 🛠 Tech Stack
 
-Sigue estos sencillos pasos para tener la aplicación ejecutándose localmente:
-
-1.  **Clona el repositorio o accede a la carpeta del proyecto:**
-    ```bash
-    cd recipes-app
-    ```
-
-2.  **Instala las dependencias del proyecto:**
-    ```bash
-    npm install
-    ```
+| Technology | Purpose |
+|------------|----------|
+| React 18 | UI Development |
+| Vite | Build Tool |
+| React Router DOM | Routing |
+| Axios | API Requests |
+| Context API | Global State Management |
+| LocalStorage | Favorites Persistence |
+| CSS3 | Styling & Responsive Design |
 
 ---
 
-## 💻 Comandos de Ejecución
+## 🏗 Architecture
 
-Una vez completada la instalación, puedes hacer uso de los siguientes comandos mediante la consola:
+The project follows a modular and scalable architecture.
 
-### Ejecutar Servidor de Desarrollo
-Para lanzar el servidor de desarrollo local con recarga rápida (HMR):
+```text
+src/
+├── components/
+├── context/
+├── hooks/
+├── pages/
+├── services/
+└── styles/
+```
+
+### Components
+
+Reusable UI components:
+
+- Navbar
+- RecipeCard
+- SearchBar
+- SkeletonCard
+- EmptyState
+- Loader
+- ScrollToTop
+
+### Pages
+
+Route-based pages:
+
+- Home
+- Favorites
+- RecipeDetail
+
+### Services
+
+API communication layer:
+
+- mealApi.js
+
+### Context
+
+Global application state:
+
+- FavoritesContext
+
+### Hooks
+
+Reusable business logic:
+
+- useDebounce
+
+---
+
+## 📂 Project Structure
+
+```text
+recipes-app/
+├── public/
+├── src/
+│
+├── components/
+│   ├── Navbar.jsx
+│   ├── RecipeCard.jsx
+│   ├── SearchBar.jsx
+│   ├── SkeletonCard.jsx
+│   ├── EmptyState.jsx
+│   ├── Loader.jsx
+│   └── ScrollToTop.jsx
+│
+├── context/
+│   └── FavoritesContext.jsx
+│
+├── hooks/
+│   └── useDebounce.js
+│
+├── pages/
+│   ├── Home.jsx
+│   ├── Favorites.jsx
+│   └── RecipeDetail.jsx
+│
+├── services/
+│   └── mealApi.js
+│
+├── styles/
+│   ├── home.css
+│   └── details.css
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+---
+
+## ⚙️ Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/your-username/recipes-app.git
+```
+
+### Navigate to the project
+
+```bash
+cd recipes-app
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start development server
+
 ```bash
 npm run dev
 ```
-*   El servidor se iniciará típicamente en: `http://localhost:5173/`
-
-### Compilar para Producción
-Para generar los archivos listos para despliegue y producción optimizada (empaquetados en la carpeta `/dist`):
-```bash
-npm run build
-```
-
-### Previsualizar Compilación de Producción
-Para testear localmente el compilado final de producción generado con el comando anterior:
-```bash
-npm run preview
-```
 
 ---
 
-## 📂 Estructura del Proyecto
+## 💻 Available Commands
 
-```
-recipes-app/
-├── index.html           # Plantilla base del DOM y metadatos SEO
-├── package.json         # Dependencias y scripts de NPM
-├── vite.config.js       # Configuración básica de Vite
-├── DOCUMENTACION_TECNICA.docx # Documentación detallada paso a paso
-└── src/
-    ├── main.jsx         # Punto de entrada de renderizado React
-    ├── App.jsx          # Enrutador principal y layout
-    ├── index.css        # Estilos globales y variables CSS de diseño
-    ├── context/
-    │   └── FavoritesContext.jsx # Proveedor global del estado de favoritos
-    ├── hooks/
-    │   └── useDebounce.js       # Hook de debounce para el buscador
-    ├── services/
-    │   └── mealApi.js           # Consultas HTTP con Axios a TheMealDB
-    ├── components/      # Componentes reutilizables (Navbar, Cards, Skeletons, etc.)
-    ├── pages/           # Vistas de nivel de página (Home, Detail, Favorites)
-    └── styles/          # Hojas de estilo locales de las vistas
-```
+| Command | Description |
+|----------|------------|
+| npm run dev | Start development server |
+| npm run build | Generate production build |
+| npm run preview | Preview production build |
 
 ---
 
-## 📄 Documentación Técnica Detallada
-Para una comprensión exhaustiva de **para qué sirve cada archivo del código, su función paso a paso, qué implementa, cómo funciona y por qué se estructuró así**, consulta el documento formal generado en la raíz del proyecto:
-*   [DOCUMENTACION_TECNICA.docx](./DOCUMENTACION_TECNICA.docx) (Documento de Microsoft Word)
+## 🌐 API
+
+This project uses **TheMealDB API**:
+
+https://www.themealdb.com/api.php
+
+Main endpoints:
+
+- Search recipes by name
+- Lookup recipe by ID
+- List categories
+- Filter recipes by category
+
+---
+
+## ⚡ Performance Optimizations
+
+The application includes several optimizations:
+
+- Debounced search requests
+- Client-side pagination
+- Skeleton loading placeholders
+- LocalStorage persistence
+- Conditional rendering
+- Optimized API requests
+- Reusable custom hooks
+
+---
+
+## 📱 Responsive Design
+
+The application is fully responsive and optimized for:
+
+- Mobile Devices
+- Tablets
+- Laptops
+- Desktop Screens
+
+---
+
+## 🔒 Error Handling
+
+The application gracefully handles:
+
+- API request failures
+- Empty search results
+- Invalid recipe IDs
+- Missing recipe data
+
+---
+
+## 🚀 Deployment
+
+This project can be deployed on:
+
+- Vercel
+- Netlify
+- GitHub Pages
+
+**Recommended platform:** Vercel
+
+---
+
+## 🔮 Future Improvements
+
+- TypeScript migration
+- Unit testing with Vitest
+- Integration testing
+- CSS Modules
+- Recipe recommendations
+- Dark mode support
+
+---
+
+## 👨‍💻 Author
+
+Developer Dylan Marin 

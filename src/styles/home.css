@@ -1,6 +1,7 @@
 /* HOME & GENERAL COMPONENTS */
 
-h1 {
+.home-page h1,
+.favorites-page h1 {
   text-align: left;
   margin-top: 40px;
   margin-bottom: 50px;
@@ -11,7 +12,8 @@ h1 {
   font-size: 2.5rem;
 }
 
-h1::after {
+.home-page h1::after,
+.favorites-page h1::after {
   content: '';
   display: block;
   width: 50px;

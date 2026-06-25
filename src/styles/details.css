@@ -58,7 +58,7 @@
 }
 
 /* INGREDIENTS */
-h2 {
+.detail-container h2 {
   font-size: 2rem;
   margin-top: 40px;
   margin-bottom: 30px;
@@ -68,7 +68,7 @@ h2 {
   text-transform: uppercase;
 }
 
-h2::after {
+.detail-container h2::after {
   content: '';
   display: block;
   width: 50px;

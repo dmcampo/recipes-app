@@ -11,13 +11,11 @@ function Navbar() {
   return (
     <header className="navbar">
       <div className="navbar__inner">
-        {/* Logo */}
         <Link to="/" className="navbar__logo" onClick={closeMenu}>
           <span className="navbar__logo-icon">🍴</span>
           <span className="navbar__logo-text">Recetas Online</span>
         </Link>
 
-        {/* Desktop nav */}
         <nav className="navbar__links" aria-label="Navegación principal">
           <NavLink
             to="/"
@@ -42,7 +40,6 @@ function Navbar() {
           </NavLink>
         </nav>
 
-        {/* Mobile hamburger */}
         <button
           className={`navbar__hamburger ${menuOpen ? "is-open" : ""}`}
           onClick={() => setMenuOpen((o) => !o)}
@@ -55,7 +52,6 @@ function Navbar() {
         </button>
       </div>
 
-      {/* Mobile drawer */}
       {menuOpen && (
         <nav className="navbar__drawer" aria-label="Menú móvil">
           <NavLink

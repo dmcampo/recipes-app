@@ -8,7 +8,7 @@ function Favorites() {
   const { favorites } = useFavorites();
 
   return (
-    <div>
+    <div className="favorites-page">
       <Link to="/" className="back-button">
         ← Volver a recetas
       </Link>

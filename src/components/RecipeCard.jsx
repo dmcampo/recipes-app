@@ -6,7 +6,7 @@ function RecipeCard({ recipe }) {
   const favored = isFavorite(recipe.idMeal);
 
   const handleFavorite = (e) => {
-    e.preventDefault(); // don't navigate when clicking the heart
+    e.preventDefault(); // Don't open the recipe page when clicking the heart button
     toggleFavorite(recipe);
   };
 
